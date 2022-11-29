@@ -103,24 +103,27 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
   @override
   Widget build(BuildContext context) {
     return !widget.hidden
-        ? ChangeNotifierProvider.value(
-            value: provider,
-            child: RoundedFrame(
-              height: widget.height,
-              padding: const EdgeInsets.only(right: 10),
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black54
-                  : Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              elevation: 0,
-              child: Row(
-                children: <Widget>[
-                  SizedBox(width: 10),
-                  Icon(Icons.search),
-                  SizedBox(width: 10),
-                  Expanded(child: _buildSearchTextField()),
-                  _buildTextClearIcon(),
-                ],
+        ? Container(
+            decoration: widget.boxDecoration,
+            child: ChangeNotifierProvider.value(
+              value: provider,
+              child: RoundedFrame(
+                height: widget.height,
+                padding: const EdgeInsets.only(right: 10),
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.black54
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                elevation: 0,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: 10),
+                    Icon(Icons.search),
+                    SizedBox(width: 10),
+                    Expanded(child: _buildSearchTextField()),
+                    _buildTextClearIcon(),
+                  ],
+                ),
               ),
             ),
           )
@@ -128,19 +131,16 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
   }
 
   Widget _buildSearchTextField() {
-    return Container(
-      decoration: widget.boxDecoration,
-      child: TextField(
-        controller: controller,
-        focusNode: focus,
-        decoration: widget.inputDecoration ??
-            InputDecoration(
-              hintText: widget.hintText,
-              border: InputBorder.none,
-              isDense: true,
-              contentPadding: widget.contentPadding,
-            ),
-      ),
+    return TextField(
+      controller: controller,
+      focusNode: focus,
+      decoration: widget.inputDecoration ??
+          InputDecoration(
+            hintText: widget.hintText,
+            border: InputBorder.none,
+            isDense: true,
+            contentPadding: widget.contentPadding,
+          ),
     );
   }
 
