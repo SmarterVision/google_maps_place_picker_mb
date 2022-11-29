@@ -4,6 +4,8 @@ description: A Flutter plugin which provides 'Picking Place' using Google Maps
 version: 2.0.0-mb.22
 homepage: https://github.com/martin-braun/google_maps_place_picker_mb
 
+module:
+  androidX: true
 environment:
   sdk: ">=2.15.0 <3.0.0"
   flutter: ">=2.10.5"
