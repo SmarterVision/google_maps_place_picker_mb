@@ -82,6 +82,7 @@ class PlacePicker extends StatefulWidget {
     this.markers = const [],
     this.searchBarMargin,
     this.searchBarPadding,
+    this.onTap,
   }) : super(key: key);
 
   final String apiKey;
@@ -120,6 +121,8 @@ class PlacePicker extends StatefulWidget {
   final List<Marker> markers;
   final EdgeInsets? searchBarMargin;
   final EdgeInsets? searchBarPadding;
+  final Function(LatLng)? onTap;
+
   /// If set the picker can only pick addresses in the given circle area.
   /// The section will be highlighted.
   final CircleArea? pickArea;
@@ -471,6 +474,7 @@ class _PlacePickerState extends State<PlacePicker> {
       fullMotion: !widget.resizeToAvoidBottomInset,
       initialTarget: initialTarget,
       appBarKey: appBarKey,
+      onTap: widget.onTap,
       markers: widget.markers,
       selectedPlaceWidgetBuilder: widget.selectedPlaceWidgetBuilder,
       pinBuilder: widget.pinBuilder,

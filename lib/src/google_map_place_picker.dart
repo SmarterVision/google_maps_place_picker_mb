@@ -59,6 +59,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
     this.zoomControlsEnabled = false,
     this.fullMotion = false,
     this.markers = const [],
+    this.onTap,
   }) : super(key: key);
 
   final LatLng initialTarget;
@@ -93,6 +94,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
   final Function(PlaceProvider)? onCameraMoveStarted;
   final CameraPositionCallback? onCameraMove;
   final Function(PlaceProvider)? onCameraIdle;
+  final Function(LatLng)? onTap;
   final List<Marker> markers;
 
   // strings
@@ -207,6 +209,11 @@ class GoogleMapPlacePicker extends StatelessWidget {
       mapType: mapType,
       markers: Set.from(markers),
       myLocationEnabled: true,
+      onTap: (LatLng latlng) {
+        if (onTap != null) {
+          onTap!(latlng);
+        }
+      },
       circles: pickArea != null && pickArea!.radius > 0
           ? Set<Circle>.from([pickArea])
           : Set<Circle>(),
