@@ -80,6 +80,8 @@ class PlacePicker extends StatefulWidget {
     this.inputDecoration,
     this.boxDecoration,
     this.markers = const [],
+    this.searchBarMargin,
+    this.searchBarPadding,
   }) : super(key: key);
 
   final String apiKey;
@@ -116,7 +118,8 @@ class PlacePicker extends StatefulWidget {
   final InputDecoration? inputDecoration;
   final BoxDecoration? boxDecoration;
   final List<Marker> markers;
-
+  final EdgeInsets? searchBarMargin;
+  final EdgeInsets? searchBarPadding;
   /// If set the picker can only pick addresses in the given circle area.
   /// The section will be highlighted.
   final CircleArea? pickArea;
@@ -375,6 +378,8 @@ class _PlacePickerState extends State<PlacePicker> {
               inputDecoration: widget.inputDecoration,
               searchBarController: searchBarController,
               sessionToken: provider!.sessionToken,
+              margin: widget.searchBarMargin,
+              padding: widget.searchBarPadding,
               hintText: widget.hintText,
               searchingText: widget.searchingText,
               debounceMilliseconds: widget.autoCompleteDebounceInMilliseconds,

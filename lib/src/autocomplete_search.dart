@@ -35,6 +35,8 @@ class AutoCompleteSearch extends StatefulWidget {
     this.autocompleteOnTrailingWhitespace,
     this.boxDecoration,
     this.inputDecoration,
+    this.padding,
+    this.margin,
   })  : assert(searchBarController != null),
         super(key: key);
 
@@ -61,6 +63,9 @@ class AutoCompleteSearch extends StatefulWidget {
   final bool? autocompleteOnTrailingWhitespace;
   final BoxDecoration? boxDecoration;
   final InputDecoration? inputDecoration;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+
   @override
   AutoCompleteSearchState createState() => AutoCompleteSearchState();
 }
@@ -105,11 +110,12 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
     return !widget.hidden
         ? Container(
             decoration: widget.boxDecoration,
+            margin: widget.margin,
+            padding: widget.padding,
             child: ChangeNotifierProvider.value(
               value: provider,
               child: RoundedFrame(
                 height: widget.height,
-                padding: const EdgeInsets.only(right: 10),
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Colors.black54
                     : Colors.white,
