@@ -37,8 +37,7 @@ class AutoCompleteSearch extends StatefulWidget {
     this.inputDecoration,
     this.padding,
     this.margin,
-  })  : assert(searchBarController != null),
-        super(key: key);
+  })  : super(key: key);
 
   final String? sessionToken;
   final String? hintText;
