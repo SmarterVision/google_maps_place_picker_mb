@@ -81,6 +81,8 @@ class PlacePicker extends StatefulWidget {
     this.searchBarMargin,
     this.searchBarPadding,
     this.onTap,
+    this.leading,
+    this.endMargin = 24,
   }) : super(key: key);
 
   final String apiKey;
@@ -189,6 +191,8 @@ class PlacePicker extends StatefulWidget {
 
   /// Whether to display appbar backbutton. Defaults to true.
   final bool automaticallyImplyAppBarLeading;
+  final Widget? leading;
+  final double endMargin;
 
   /// Will perform an autocomplete search, if set to true. Note that setting
   /// this to true, while providing a smoother UX experience, may cause
@@ -354,24 +358,27 @@ class _PlacePickerState extends State<PlacePicker> {
   Widget _buildSearchBar(BuildContext context) {
     return Row(
       children: <Widget>[
-        widget.automaticallyImplyAppBarLeading || widget.onTapBack != null
-            ? IconButton(
-                onPressed: () {
-                  if (!showIntroModal ||
-                      widget.introModalWidgetBuilder == null) {
-                    if (widget.onTapBack != null) {
-                      widget.onTapBack!();
-                      return;
+        if (widget.leading != null)
+          widget.leading!
+        else
+          widget.automaticallyImplyAppBarLeading || widget.onTapBack != null
+              ? IconButton(
+                  onPressed: () {
+                    if (!showIntroModal ||
+                        widget.introModalWidgetBuilder == null) {
+                      if (widget.onTapBack != null) {
+                        widget.onTapBack!();
+                        return;
+                      }
+                      Navigator.maybePop(context);
                     }
-                    Navigator.maybePop(context);
-                  }
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                ),
-                color: Colors.black.withAlpha(128),
-                padding: EdgeInsets.zero)
-            : SizedBox(width: 15),
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                  ),
+                  color: Colors.black.withAlpha(128),
+                  padding: EdgeInsets.zero)
+              : SizedBox(width: 15),
         Expanded(
           child: AutoCompleteSearch(
               appBarKey: appBarKey,
@@ -476,6 +483,7 @@ class _PlacePickerState extends State<PlacePicker> {
       markers: widget.markers,
       selectedPlaceWidgetBuilder: widget.selectedPlaceWidgetBuilder,
       pinBuilder: widget.pinBuilder,
+      endMargin: widget.endMargin,
       onSearchFailed: widget.onGeocodingSearchFailed,
       debounceMilliseconds: widget.cameraMoveDebounceInMilliseconds,
       enableMapTypeButton: widget.enableMapTypeButton,

@@ -37,7 +37,7 @@ class AutoCompleteSearch extends StatefulWidget {
     this.inputDecoration,
     this.padding,
     this.margin,
-  })  : super(key: key);
+  }) : super(key: key);
 
   final String? sessionToken;
   final String? hintText;
@@ -122,9 +122,6 @@ class AutoCompleteSearchState extends State<AutoCompleteSearch> {
                 elevation: 0,
                 child: Row(
                   children: <Widget>[
-                    SizedBox(width: 10),
-                    Icon(Icons.search),
-                    SizedBox(width: 10),
                     Expanded(child: _buildSearchTextField()),
                     _buildTextClearIcon(),
                   ],

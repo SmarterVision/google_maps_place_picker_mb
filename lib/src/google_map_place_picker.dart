@@ -60,6 +60,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
     this.fullMotion = false,
     this.markers = const [],
     this.onTap,
+    this.endMargin = 24,
   }) : super(key: key);
 
   final LatLng initialTarget;
@@ -81,7 +82,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
 
   final bool? usePinPointingSearch;
   final bool? usePlaceDetailSearch;
-
+  final double? endMargin;
   final bool? selectInitialPosition;
 
   final String? language;
@@ -591,7 +592,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
         appBarKey.currentContext!.findRenderObject() as RenderBox;
     return Positioned(
       top: appBarRenderBox.size.height,
-      right: 15,
+      right: endMargin,
       child: Column(
         children: <Widget>[
           enableMapTypeButton!
