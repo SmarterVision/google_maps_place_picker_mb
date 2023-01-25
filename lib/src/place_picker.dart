@@ -83,6 +83,7 @@ class PlacePicker extends StatefulWidget {
     this.onTap,
     this.leading,
     this.endMargin = 24,
+    this.topMargin = 8,
   }) : super(key: key);
 
   final String apiKey;
@@ -193,6 +194,7 @@ class PlacePicker extends StatefulWidget {
   final bool automaticallyImplyAppBarLeading;
   final Widget? leading;
   final double endMargin;
+  final double topMargin;
 
   /// Will perform an autocomplete search, if set to true. Note that setting
   /// this to true, while providing a smoother UX experience, may cause
@@ -484,6 +486,7 @@ class _PlacePickerState extends State<PlacePicker> {
       selectedPlaceWidgetBuilder: widget.selectedPlaceWidgetBuilder,
       pinBuilder: widget.pinBuilder,
       endMargin: widget.endMargin,
+      topMargin:widget.topMargin,
       onSearchFailed: widget.onGeocodingSearchFailed,
       debounceMilliseconds: widget.cameraMoveDebounceInMilliseconds,
       enableMapTypeButton: widget.enableMapTypeButton,
