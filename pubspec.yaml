@@ -16,7 +16,7 @@ dependencies:
   geolocator: ^10.1.0
   google_api_headers: ^3.1.0
   google_maps_flutter: ^2.5.0
-  flutter_google_maps_webservices: ^1.1.1
+  flutter_google_maps_webservices: any
   http: any
   location: ^5.0.3
   provider: ^6.1.1
