@@ -13,21 +13,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  geolocator: ^10.1.0
-  google_api_headers: ^3.1.0
-  google_maps_flutter: ^2.5.0
+  geolocator: ^13.0.1
+  google_api_headers: ^4.2.5
+  google_maps_flutter: ^2.9.0
   flutter_google_maps_webservices: any
   http: any
-  location: ^5.0.3
-  provider: ^6.1.1
+  location: ^7.0.1
+  provider: ^6.1.2
   tuple: ^2.0.2
-  uuid: ^4.2.1
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter: null
 
 false_secrets:
  - /example/lib/keys.dart
